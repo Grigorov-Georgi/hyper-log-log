@@ -5,5 +5,16 @@ package org.example;
 
 public class App {
     public static void main(String[] args) {
+        SimpleHyperLogLog hll = new SimpleHyperLogLog(64);
+
+        // 27 unique users
+        String[] users = { "alice", "bob", "charlie", "alice", "bob", "charlie", "david", "eve", "frank", "george",
+                "hannah", "irene", "jack", "kate", "linda", "mike", "nina", "olive", "peter", "quincy", "rachel",
+                "sara", "taylor", "ulrich", "vicky", "wendy", "xavier", "yolanda", "zane" };
+        for (String user : users) {
+            hll.add(user);
+        }
+
+        System.out.println("Estimated cardinality: " + hll.count()); // returns 24
     }
 }
